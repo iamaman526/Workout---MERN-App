@@ -7,13 +7,16 @@ const workoutRoutes = require("./routes/workouts");
 // express app
 const app = express();
 
+app.use(express.json())
 // middleware
+
 app.use((req, res, next) => {
   console.log(req.path, req.method);
   next();
-});
+})
 
 // routes
+
 app.use("/api/workouts", workoutRoutes);
 
 // connect to db
@@ -21,11 +24,11 @@ app.use("/api/workouts", workoutRoutes);
 mongoose
   .connect(process.env.MONG_URI)
   .then(() => {
+console.log('connected to database')
+
     // listen for requests
     app.listen(process.env.PORT, () => {
-      console.log(
-        ` Connected to db & listening on port - http://localhost:4000/api/workouts` ,process.env.PORT
-      );
+      
     });
   })
   .catch((error) => {
