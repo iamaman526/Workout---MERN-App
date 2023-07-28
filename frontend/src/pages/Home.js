@@ -7,10 +7,12 @@ import WorkoutForm from "../components/WorkoutForm"
 
 const Home = () => {
   const { workouts, dispatch } = useWorkoutsContext()
+  const host = "https://workout-buddy-3qxi.onrender.com";
+
 
   useEffect(() => {
     const fetchWorkouts = async () => {
-      const response = await fetch('/api/workouts')
+      const response = await fetch(`${host}/api/workouts`)
       const json = await response.json()
 
       if (response.ok) {
