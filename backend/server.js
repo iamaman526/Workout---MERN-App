@@ -8,6 +8,7 @@ const workoutRoutes = require("./routes/workouts");
 const app = express();
 
 app.use(express.json())
+app.use(cors());
 // middleware
 
 app.use((req, res, next) => {
